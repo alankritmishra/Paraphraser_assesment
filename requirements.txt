@@ -1,0 +1,10 @@
+transformers 
+sentencepiece
+python-Levenshtein 
+fuzzywuzzy
+sentence-transformers
+pandas
+numpy
+scipy
+protobuf==3.20.0
+sklearn-pandas==1.5.0
