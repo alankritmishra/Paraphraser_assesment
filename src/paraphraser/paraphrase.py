@@ -1,5 +1,4 @@
-from Paraphraser.parrot import Parrot
-from Assets.models import Model
+from paraphraser.parrot import Parrot
     
 class Parapharser:
     def paraphrase(self, model, sentence):

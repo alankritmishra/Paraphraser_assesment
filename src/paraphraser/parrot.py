@@ -1,12 +1,10 @@
-from Assets.models import Model
-
 class Parrot():
   
   def __init__(self, model, use_gpu=False):
     import pandas as pd
-    from Paraphraser.filters import Adequacy
-    from Paraphraser.filters import Fluency
-    from Paraphraser.filters import Diversity
+    from paraphraser.filters import Adequacy
+    from paraphraser.filters import Fluency
+    from paraphraser.filters import Diversity
     self.tokenizer = model.get_paraphrase_tokenizer()
     self.model     = model.get_paraphrase_model()
     self.adequacy_score = Adequacy(model)
