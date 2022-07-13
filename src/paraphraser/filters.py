@@ -1,6 +1,4 @@
 import torch
-from Assets.models import Model
-
 class Adequacy():
   
   def __init__(self, model):

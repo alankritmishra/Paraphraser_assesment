@@ -1,8 +1,8 @@
-from Paraphraser.paraphraser import Parapharser
-from Assets.models import Model
+import paraphraser
+import models
 
-model = Model()
-parapharser = Parapharser()
+model = models.Model()
+parapharser = paraphraser.Parapharser()
 
 print("hello world")
 sentences = ["India is a great country", "Can you recommed some upscale restaurants in Newyork?",
