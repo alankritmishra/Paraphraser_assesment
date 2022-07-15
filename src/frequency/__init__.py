@@ -1,1 +1,1 @@
-from src.models import Model
+from frequency.freq import Frequency
