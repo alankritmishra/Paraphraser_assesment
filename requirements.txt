@@ -1,3 +1,6 @@
+Flask==2.0.3
+uvicorn
+flask-cors
 argon2-cffi==21.3.0
 argon2-cffi-bindings==21.2.0
 asttokens==2.0.5

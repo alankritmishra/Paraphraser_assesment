@@ -16,6 +16,7 @@ src/paraphraser/__pycache__
 src/frequency/__init__.pyc
 src/redundancy/__init__.pyc
 *.pyc
+test.py
 
 # Created by https://www.toptal.com/developers/gitignore/api/flask,django,python
 # Edit at https://www.toptal.com/developers/gitignore?templates=flask,django,python
