@@ -57,7 +57,6 @@ class Frequency():
         # bold the words that are most common in the original text
         for sub, val in new_set:
             tokens_new = [word if word.lower() != sub else '**' + word + '**' for word in tokens_new]
-            print(sub, val)
 
         #final ouptut
         modified_text = self.tokenizer.convert_tokens_to_string(tokens_new)
