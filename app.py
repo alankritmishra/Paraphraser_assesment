@@ -34,7 +34,7 @@ def generateParaphrase():
     data = json.loads(request.data)
     text = data['text']
     result, top_four_words = wat.analyse(text)
-    response = {'data': {'processed_text': result, 'top_four_words': top_four_words}}
+    response = {'data': {'processed_text': result, 'frequent_words': top_four_words}}
     return jsonify(response)
 
 if __name__ == '__main__':
