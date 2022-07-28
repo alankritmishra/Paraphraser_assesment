@@ -23,6 +23,3 @@ class WAT():
     def analyse(self, text):
         bold_text, top_four_words = self.freq.get_frequency(text)
         return bold_text, top_four_words
-
-
-    
