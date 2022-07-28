@@ -37,6 +37,5 @@ def generateParaphrase():
     response = {'data': {'processed_text': result, 'frequent_words': top_four_words}}
     return jsonify(response)
 
-if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 8000))
-    app.run(host='0.0.0.0', port=port)
+if __name__ == "__main__":
+    app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))

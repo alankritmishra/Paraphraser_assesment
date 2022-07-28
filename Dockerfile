@@ -23,6 +23,6 @@ RUN python3 -m nltk.downloader stopwords
 COPY . .
 
 # Setting up entry point, environment variables, and start command
-ENTRYPOINT [ "python3" ]
-CMD ["app.py"]
-# CMD gunicorn app:app -w 2 --threads 2 --timeout 2000
+# ENTRYPOINT [ "python3" ]
+# CMD ["app.py"]
+CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 app:app
