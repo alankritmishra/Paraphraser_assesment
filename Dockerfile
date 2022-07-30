@@ -25,4 +25,6 @@ COPY . .
 # Setting up entry point, environment variables, and start command
 # ENTRYPOINT [ "python3" ]
 # CMD ["app.py"]
+# Set $PORT environment variable
+ENV PORT 8080
 CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 app:app
