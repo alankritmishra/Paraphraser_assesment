@@ -17,12 +17,14 @@ class WAT():
         for sentence in sentence_list:
             parapharsed = self.parapharser.paraphrase(self.model, sentence)
             if parapharsed is not None:
-                parapharsed_text += parapharsed_text + " " + parapharsed[0][0]
+                parapharsed_text += " " + parapharsed[0][0]
         return parapharsed_text
 
     def analyse(self, text):
         bold_text, top_four_words = self.freq.get_frequency(text)
-        return bold_text, top_four_words
-
-
-    
+        freq_words = {}
+        for x in top_four_words:
+            word = x[0]
+            freq = x[1]
+            freq_words[word] = freq
+        return bold_text, freq_words
