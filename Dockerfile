@@ -27,4 +27,4 @@ COPY . .
 # CMD ["app.py"]
 # Set $PORT environment variable
 ENV PORT 8080
-CMD gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 2000 app:app
+CMD gunicorn --bind :$PORT --workers 2 --threads 8 --timeout 2000 app:app

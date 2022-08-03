@@ -5,6 +5,7 @@ import os, sys
 from flask_cors import CORS
 from jinja2.utils import markupsafe
 import random
+import nltk
 
 ## Importing project modules
 newdir = os.path.abspath(os.path.join(os.path.dirname("__file__"), './src'))
@@ -16,6 +17,7 @@ markupsafe.Markup()
 app = Flask(__name__)
 CORS(app)
 
+nltk.download('stopwords')
 wat = src.WAT()
 
 f = open('test_paragraph.json')
