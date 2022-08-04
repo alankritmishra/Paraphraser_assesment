@@ -35,4 +35,8 @@ class WAT():
             freq = ""
             freq_words[word] = freq
 
+        # sort freq_words by value
+        freq_words = sorted(freq_words.items(),
+                            key=lambda x: x[1], reverse=True)
+
         return bold_text, freq_words
