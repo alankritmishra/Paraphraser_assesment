@@ -62,7 +62,7 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
-nlp
+nlpp
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
