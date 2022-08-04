@@ -3,6 +3,7 @@ import models
 import frequency
 from sentence_splitter import SentenceSplitter, split_text_into_sentences
 
+
 class WAT():
 
     def __init__(self):
@@ -21,10 +22,21 @@ class WAT():
         return parapharsed_text
 
     def analyse(self, text):
-        bold_text, top_four_words = self.freq.get_frequency(text)
+        bold_text, frequent_words = self.freq.get_frequency(text)
         freq_words = {}
-        for x in top_four_words:
-            word = x[0]
-            freq = x[1]
+
+        if len(frequent_words) > 0:
+            for x in frequent_words:
+                word = x[0]
+                freq = x[1]
+                freq_words[word] = freq
+        else:
+            word = "No frequent words found"
+            freq = ""
             freq_words[word] = freq
+
+        # sort freq_words by value
+        freq_words = sorted(freq_words.items(),
+                            key=lambda x: x[1], reverse=True)
+
         return bold_text, freq_words
