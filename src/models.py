@@ -2,13 +2,20 @@ from happytransformer import HappyTextToText
 
 
 class Model:
-    def __init__(self, adequacy_model_tag='prithivida/parrot_adequacy_model', fluency_model_tag='prithivida/parrot_fluency_model', diversity_model_tag='paraphrase-distilroberta-base-v2', paraphrase_model_tag='prithivida/parrot_paraphraser_on_T5'):
+    def __init__(self, adequacy_model_tag='prithivida/parrot_adequacy_model', 
+                fluency_model_tag='prithivida/parrot_fluency_model', 
+                diversity_model_tag='paraphrase-distilroberta-base-v2', 
+                paraphrase_model_tag='prithivida/parrot_paraphraser_on_T5',
+                 similarity_model_tag='sentence-transformers/all-MiniLM-L6-v2'):
 
         # Importing required libraries
         # from transformers import AutoModelForSequenceClassification, AutoTokenizer, AutoModelForSeq2SeqLM
         from transformers import AutoTokenizer
-        # from sentence_transformers import SentenceTransformer
+        from sentence_transformers import SentenceTransformer, util
         # from happytransformer import TTSettings, HappyTextToText
+
+        # Load the model for the similarity
+        self.similarity_model = SentenceTransformer(similarity_model_tag)
 
         # # Load the model for the adequacy model
         # self.adequacy_model = AutoModelForSequenceClassification.from_pretrained(
@@ -37,7 +44,9 @@ class Model:
         # self.beam_settings = TTSettings(
         #     num_beams=5, min_length=1, max_length=100)
 
-    # # Getter functions for adequacy model
+    # Getter functions for Similarity model
+    def get_similarity_model(self):
+        return self.similarity_model
     # def get_adequancy_model(self):
     #     return self.adequacy_model
 
@@ -50,6 +59,11 @@ class Model:
 
     def get_fluency_tokenizer(self):
         return self.fluency_tokenizer
+
+
+    # #get embedding for a paragraph
+    # def get_embedding(self, sentence):
+    #     return self.similarity_model.encode(sentence)
 
     # # Getter functions for diversity model
     # def get_diversity_model(self):
