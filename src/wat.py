@@ -9,17 +9,17 @@ class WAT():
     def __init__(self):
         self.splitter = SentenceSplitter(language='en')
         self.model = models.Model()
-        self.parapharser = paraphraser.Parapharser()
+        # self.parapharser = paraphraser.Parapharser()
         self.freq = frequency.Frequency(self.model)
-
-    def paraphrase_text(self, paragraph):
-        sentence_list = self.splitter.split(paragraph)
-        parapharsed_text = ""
-        for sentence in sentence_list:
-            parapharsed = self.parapharser.paraphrase(self.model, sentence)
-            if parapharsed is not None:
-                parapharsed_text += " " + parapharsed[0][0]
-        return parapharsed_text
+        
+    # def paraphrase_text(self, paragraph):
+    #     sentence_list = self.splitter.split(paragraph)
+    #     parapharsed_text = ""
+    #     for sentence in sentence_list:
+    #         parapharsed = self.parapharser.paraphrase(self.model, sentence)
+    #         if parapharsed is not None:
+    #             parapharsed_text += " " + parapharsed[0][0]
+    #     return parapharsed_text
 
     def analyse(self, text):
         bold_text, frequent_words = self.freq.get_frequency(text)
@@ -39,4 +39,10 @@ class WAT():
         freq_words = sorted(freq_words.items(),
                             key=lambda x: x[1], reverse=True)
 
-        return bold_text, freq_words
+        serialised_freq_words = {}
+        for x in freq_words:
+                word = x[0]
+                freq = x[1]
+                serialised_freq_words[word] = freq
+
+        return bold_text, serialised_freq_words
