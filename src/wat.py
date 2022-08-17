@@ -49,4 +49,4 @@ class WAT():
                 freq = x[1]
                 serialised_freq_words[word] = freq
 
-        return bold_text, serialised_freq_words, lexical_sim, semantic_sim
+        return bold_text, serialised_freq_words #,lexical_sim, semantic_sim #TODO: add lexical and semantic similarity
