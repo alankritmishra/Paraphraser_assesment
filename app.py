@@ -20,7 +20,7 @@ CORS(app)
 nltk.download('stopwords')
 wat = src.WAT()
 
-f = open('test_paragraph.json')
+f = open('db.json')
 data = json.load(f)
 
 @app.route('/', methods=["GET"])
@@ -29,24 +29,39 @@ def hello_world():
 
 @app.route('/paraphrase', methods=["POST"])
 def paraphrase():
-    data = json.loads(request.data)
-    text = data['text']
-    paraphrase = wat.paraphrase_text(text)
-    response = {'data' :{'paraphrased': paraphrase}}
-    return jsonify(response)
+    try:
+        req = json.loads(request.data)
+        uid = req['uid']
+        print(uid)
+        paragraphs = data[uid]
+        print(paragraphs)
+        result = {
+            "data" :{
+                "paraphrased" : paragraphs["paraphrased_paragraph"]
+            }
+        }
+        return result
+    except:
+        return {"error" : "Invalid uid"}
 
 @app.route('/analytics', methods=['POST'])
 def generateParaphrase():
     data = json.loads(request.data)
     text = data['text']
     result, top_four_words = wat.analyse(text)
-    response = {'data': {'processed_text': result, 'frequent_words': top_four_words}}
+    response = {'data': {'processed_text': result, 'frequent_words': top_four_words, "direct_phrase": [], "similarity_index":0.3 }}
     return jsonify(response)
 
 @app.route('/paragraph', methods=['GET'])
 def generateParagraph():
-    paragraph = random.choice(data['paragraphs'])
-    return {"data": {"paragraph": paragraph}}
+    keys = data.keys()
+    index = random.choice(list(keys))
+    paragraph = data[index]
+    result = {
+        "uid": index,
+        "paragraph": paragraph['paragraph']
+    }
+    return result
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))

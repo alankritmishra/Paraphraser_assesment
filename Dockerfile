@@ -14,7 +14,8 @@ COPY ./requirements.txt requirements.txt
 
 # Installing project dependencies
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
-RUN python3 -m nltk.downloader stopwords
+RUN python3 -c "import nltk; nltk.download('stopwords')"
+# RUN python3 -m nltk.downloader stopwords
 
 # Copying all the files and folders in the working directory container directory
 # COPY ./app.py app.py
