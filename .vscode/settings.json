@@ -1,0 +1,9 @@
+{
+    "grammarly.selectors": [
+        {
+            "language": "json",
+            "scheme": "file",
+            "pattern": "db.json"
+        }
+    ]
+}
