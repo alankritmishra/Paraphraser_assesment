@@ -13,6 +13,7 @@ class Similarity():
         """
         Compute the semantic similarity between two paragraphs.
         """
+
         embedding1 = self.sem_model.encode(given_para)
         embedding2 = self.sem_model.encode(user_para)
         cosine_score = util.pytorch_cos_sim(embedding1, embedding2)

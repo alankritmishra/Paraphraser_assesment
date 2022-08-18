@@ -29,6 +29,10 @@ class WAT():
         directphrase = self.direct_phrase.direct_phrase(sentence_list, user_paragraph)
         bold_text, frequent_words = self.freq.get_frequency(user_paragraph)
         lexical_sim, semantic_sim = self.similarity.get_similarity_index(given_paragraph, user_paragraph)
+        lexical_similarity = lexical_sim.item() * 100
+        lexical_similarity = round(lexical_similarity, 2)
+        context_similarity = semantic_sim.item() * 100
+        context_similarity = round(context_similarity, 2)
         freq_words = {}
 
         if len(frequent_words) > 0:
@@ -51,4 +55,4 @@ class WAT():
                 freq = x[1]
                 serialised_freq_words[word] = freq
 
-        return bold_text, serialised_freq_words, directphrase, lexical_sim, semantic_sim
+        return bold_text, serialised_freq_words, directphrase, lexical_similarity, context_similarity

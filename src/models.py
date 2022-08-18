@@ -57,11 +57,6 @@ class Model:
     def get_fluency_tokenizer(self):
         return self.fluency_tokenizer
 
-
-    # #get embedding for a paragraph
-    # def get_embedding(self, sentence):
-    #     return self.similarity_model.encode(sentence)
-
     # # Getter functions for diversity model
     # def get_diversity_model(self):
     #     return self.diversity_model
@@ -75,4 +70,4 @@ class Model:
 
     # # getter for grammar in paraphrase model
     # def get_grammar_model(self):
-    #     return self.happy_tt, self.beam_settings
+    #     return self.happy_tt, self.beam_setting
