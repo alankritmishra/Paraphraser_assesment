@@ -8,8 +8,7 @@ class Model:
 
         # Importing required libraries
         # from transformers import AutoModelForSequenceClassification, AutoTokenizer, AutoModelForSeq2SeqLM
-        from transformers import AutoTokenizer
-        from sentence_transformers import SentenceTransformer, util
+        from sentence_transformers import SentenceTransformer
         # from happytransformer import TTSettings, HappyTextToText
 
         # Load the model for the similarity
