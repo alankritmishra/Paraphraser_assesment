@@ -23,6 +23,13 @@ wat = src.WAT()
 f = open('db.json')
 data = json.load(f)
 
+def fetch_paragraphs(uid):
+    try:
+        paragraphs = data[uid]
+        return paragraphs
+    except:
+        return None
+
 @app.route('/', methods=["GET"])
 def hello_world():
     return "Hey! This is the WAT API"
@@ -32,9 +39,7 @@ def paraphrase():
     try:
         req = json.loads(request.data)
         uid = req['uid']
-        print(uid)
-        paragraphs = data[uid]
-        print(paragraphs)
+        paragraphs = fetch_paragraphs(uid)
         result = {
             "data" :{
                 "paraphrased" : paragraphs["paraphrased_paragraph"]
@@ -48,8 +53,11 @@ def paraphrase():
 def generateParaphrase():
     data = json.loads(request.data)
     text = data['text']
-    result, top_four_words = wat.analyse(text)
-    response = {'data': {'processed_text': result, 'frequent_words': top_four_words, "direct_phrase": [], "similarity_index":0.3 }}
+    uid = data['uid']
+    paragraphs = fetch_paragraphs(uid)
+    paragraph = paragraphs['paragraph']
+    result, top_four_words, direct_pharses = wat.analyse(paragraph, text)
+    response = {'data': {'processed_text': result, 'frequent_words': top_four_words, "direct_phrase": direct_pharses, "similarity_index":0.3 }}
     return jsonify(response)
 
 @app.route('/paragraph', methods=['GET'])

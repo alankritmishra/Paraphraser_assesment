@@ -1,6 +1,4 @@
-from happytransformer import HappyTextToText
-
-
+from transformers import AutoTokenizer
 class Model:
     def __init__(self, adequacy_model_tag='prithivida/parrot_adequacy_model', 
                 fluency_model_tag='prithivida/parrot_fluency_model', 
