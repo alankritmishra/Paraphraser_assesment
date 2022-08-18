@@ -1,12 +1,9 @@
-from happytransformer import HappyTextToText
-
-
+from transformers import AutoTokenizer
 class Model:
     def __init__(self, adequacy_model_tag='prithivida/parrot_adequacy_model', fluency_model_tag='prithivida/parrot_fluency_model', diversity_model_tag='paraphrase-distilroberta-base-v2', paraphrase_model_tag='prithivida/parrot_paraphraser_on_T5'):
 
         # Importing required libraries
         # from transformers import AutoModelForSequenceClassification, AutoTokenizer, AutoModelForSeq2SeqLM
-        from transformers import AutoTokenizer
         # from sentence_transformers import SentenceTransformer
         # from happytransformer import TTSettings, HappyTextToText
 

@@ -1,8 +1,8 @@
 import paraphraser
 import models
 import frequency
+import directphrase
 from sentence_splitter import SentenceSplitter, split_text_into_sentences
-
 
 class WAT():
 
@@ -11,6 +11,7 @@ class WAT():
         self.model = models.Model()
         # self.parapharser = paraphraser.Parapharser()
         self.freq = frequency.Frequency(self.model)
+        self.direct_phrase = directphrase.DirectPhrase()
         
     # def paraphrase_text(self, paragraph):
     #     sentence_list = self.splitter.split(paragraph)
@@ -21,8 +22,10 @@ class WAT():
     #             parapharsed_text += " " + parapharsed[0][0]
     #     return parapharsed_text
 
-    def analyse(self, text):
-        bold_text, frequent_words = self.freq.get_frequency(text)
+    def analyse(self, given_paragraph, user_paragraph):
+        sentence_list = self.splitter.split(given_paragraph)
+        directphrase = self.direct_phrase.direct_phrase(sentence_list, user_paragraph)
+        bold_text, frequent_words = self.freq.get_frequency(user_paragraph)
         freq_words = {}
 
         if len(frequent_words) > 0:
@@ -45,4 +48,4 @@ class WAT():
                 freq = x[1]
                 serialised_freq_words[word] = freq
 
-        return bold_text, serialised_freq_words
+        return bold_text, serialised_freq_words, directphrase

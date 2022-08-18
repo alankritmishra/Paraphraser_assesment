@@ -65,6 +65,7 @@ class Frequency():
         modified_text = self.tokenizer.convert_tokens_to_string(tokens_new)
 
         # filter cls & sep tokens
+        print(modified_text)
         result = modified_text.replace('[CLS]', '').replace(
             '[SEP]', '.').replace('[sep]', '')
 
