@@ -25,7 +25,7 @@ class WAT():
 
     def analyse(self, text):
         bold_text, frequent_words = self.freq.get_frequency(text)
-        # TODO: get given paragraph and user paragraph as arguments
+        # TODO: [OP-55] get given paragraph and user paragraph as arguments
         # lexical_sim, semantic_sim = self.similarity.get_similarity_index(given_text, user_text)
         freq_words = {}
 
@@ -49,4 +49,5 @@ class WAT():
                 freq = x[1]
                 serialised_freq_words[word] = freq
 
-        return bold_text, serialised_freq_words #,lexical_sim, semantic_sim #TODO: add lexical and semantic similarity
+        return bold_text, serialised_freq_words #,lexical_sim, semantic_sim 
+        #TODO: add lexical and semantic similarity
