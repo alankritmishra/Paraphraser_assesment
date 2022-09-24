@@ -65,7 +65,7 @@ class DirectPhrase():
                     complete_sentence = ""
                     sub_list = final_list[i: length]
                     for j, s in enumerate(sub_list):
-                        if sub_list.index(m) != len(sub_list)-1:
+                        if j != len(sub_list)-1:
                             if complete_sentence == "":
                                 complete_sentence = sub_list[j]
                             if self.isCountinousSentence(sub_list[j], sub_list[j+1]) == True:
@@ -74,5 +74,23 @@ class DirectPhrase():
                             else:
                                 final_matches.append(complete_sentence)
                                 break
-    
-        return final_matches
+                            
+        full_sentence = []
+        pattern = "[!\"#$%&'()*+,\-/:;<=>?@[\]^_`{|}~]"
+        user_paragraph = re.sub(pattern, '', user_paragraph)
+        final_list = final_matches.copy()
+        for sen in given_paragraph:
+            sen = sen.translate(str.maketrans('', '', string.punctuation))
+            if sen in user_paragraph or user_paragraph in sen:
+                for j, m in enumerate(final_matches):
+                    m_sen = m.translate(str.maketrans('', '', string.punctuation))
+                    if m_sen in sen or sen in m_sen:
+                        final_list[final_list.index(m)] = sen
+                        # final_list.remove(m)
+                # final_list.append(sen)      
+
+        final_list = list(set(final_list)) 
+
+        print(final_list)      
+
+        return final_list, full_sentence
