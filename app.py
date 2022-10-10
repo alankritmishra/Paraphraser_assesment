@@ -56,8 +56,8 @@ def generateParaphrase():
     uid = data['uid']
     paragraphs = fetch_paragraphs(uid)
     paragraph = paragraphs['paragraph']
-    result, top_four_words, direct_pharses = wat.analyse(paragraph, text)
-    response = {'data': {'processed_text': result, 'frequent_words': top_four_words, "direct_phrase": direct_pharses, "similarity_index":0.3 }}
+    result, top_four_words, direct_pharses, lex_similarity, context_similarity, full_sentences = wat.analyse(paragraph, text)
+    response = {'data': {'processed_text': result, 'frequent_words': top_four_words, "direct_phrase": direct_pharses, "lexical_similarity_index":lex_similarity, "context_similarity_index":context_similarity, "full_sentences":full_sentences }}
     return jsonify(response)
 
 @app.route('/paragraph', methods=['GET'])
