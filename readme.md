@@ -12,7 +12,7 @@ This metric measures how frequently a specific word appears in the user input pa
 ### Direct Phrase: 
 This measure recognizes directly copied or quoted phrases from the provided paragraph in the user's input text.
  
-Link to the paraphraser: https://wat-frontend.vercel.app/.
+<!--Link to the paraphraser: https://wat-frontend.vercel.app/.-->
 
 ## Structure of the project
 It is a backend project which utilizes open-source pre-trained hugging face NLP-based models and wraps it in REST API developed on flask and WSGI. There are three components of the project,
